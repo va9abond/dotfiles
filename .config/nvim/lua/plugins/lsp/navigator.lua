@@ -54,14 +54,14 @@ require('navigator').setup({
     mason = true, -- set to true if you would like use the lsp installed by williamboman/mason
 
     lsp = {
-        enable = true,  -- skip lsp setup, and only use treesitter in navigator.
+        -- enable = true,  -- skip lsp setup, and only use treesitter in navigator.
                         -- Use this if you are not using LSP servers, and only want to enable treesitter support.
                         -- If you only want to prevent navigator from touching your LSP server configs,
                         -- use `disable_lsp = "all"` instead.
                         -- If disabled, make sure add require('navigator.lspclient.mapping').setup({bufnr=bufnr, client=client}) in your
                         -- own on_attach
 
-        -- disable_lsp = "all",
+        disable_lsp = "all",
 
         code_action = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
         code_lens_action = { enable = true, sign = true, sign_priority = 40, virtual_text = true },
