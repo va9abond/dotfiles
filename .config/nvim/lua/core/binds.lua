@@ -1,5 +1,5 @@
-local function map(m,k,v)
-	vim.keymap.set(m,k,v, { noremap = true, silent = false })
+local function map(m, k, v)
+	vim.keymap.set(m, k, v, { noremap = true, silent = false })
 end
 
 
@@ -7,7 +7,7 @@ vim.g.mapleader = ";"
 vim.g.maplocalleader = ";"
 map('i', 'jk', '<ESC>')
 
-map('n', '<leader>h', '<CMD>nohlsearch<CR>')
+vim.keymap.set('n', '<leader>h', '<esc>:nohlsearch<cr>', { noremap = true, silent = true })
 
 map('n', '<Tab>', '<CMD>tabnext<CR>')
 map('n', '<S-Tab>', '<CMD>tabprev<CR>')
@@ -26,8 +26,8 @@ map('n', '<leader>o', 'o<ESC>')
 map('n', '<leader>O', 'O<ESC>')
 
 -- split window
-map('n', '<leader>v', '<CMD>vsplit<CR>')
-map('n', '<leader>x', '<CMD>split<CR>')
+map('n', '<leader>|', '<CMD>vsplit<CR>')
+map('n', '<leader>_', '<CMD>split<CR>')
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL
@@ -41,3 +41,18 @@ map('i', '<C-n>', '<cmd>NvimTreeToggle<cr>')
 -- the greatest remap ever, thx ThePrimeagen and asbjornHaland
 map({ 'v', 'n' }, '<leader>y', [["+y]])
 map('n', '<leader>Y', [["+Y]])
+
+-- Map tmux navigator
+map({ 'n', 'i' }, '<C-h>', '<CMD>TmuxNavigateLeft<CR>')
+map({ 'n', 'i' }, '<C-j>', '<CMD>TmuxNavigateDown<CR>')
+map({ 'n', 'i' }, '<C-k>', '<CMD>TmuxNavigateUp<CR>')
+map({ 'n', 'i' }, '<C-l>', '<CMD>TmuxNavigateRight<CR>')
+
+-- Tagbar
+-- vim.keymap.set('n', '<Bslash>t', '<cmd>AerialToggle!<CR>')
+vim.keymap.set('n', '<Bslash>t', '<cmd>Vista!!<CR>')
+
+-- Compiler.nvim
+-- Open compiler
+vim.api.nvim_buf_set_keymap(0, 'n', '<F6>', "<cmd>CompilerOpen<cr>", { noremap = true, silent = true })
+vim.api.nvim_buf_set_keymap(0, 'n', '<S-F6>', "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true })
