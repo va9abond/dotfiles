@@ -26,8 +26,8 @@ map('n', '<leader>o', 'o<ESC>')
 map('n', '<leader>O', 'O<ESC>')
 
 -- split window
-map('n', '<leader>|', '<CMD>vsplit<CR>')
-map('n', '<leader>_', '<CMD>split<CR>')
+map('n', '<Bslash>v', '<CMD>vsplit<CR>')
+map('n', '<Bslash>x', '<CMD>split<CR>')
 
 -- Use operator pending mode to visually select the whole buffer
 -- e.g. dA = delete buffer ALL, yA = copy whole buffer ALL

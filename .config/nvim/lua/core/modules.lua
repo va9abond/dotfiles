@@ -49,6 +49,10 @@ local plugins = {
     -- Colorschemes
     { 'RRethy/nvim-base16' },
 
+    { 'blazkowolf/gruber-darker.nvim' },
+
+    { 'drsooch/gruber-darker-vim' },
+
     {
         'ellisonleao/gruvbox.nvim',
         lazy = false,
@@ -143,12 +147,24 @@ local plugins = {
     },
 
     {
-        'RRethy/vim-illuminate',
+        -- 'RRethy/vim-illuminate',
         -- opts = { delay = 200 }
     },
 
     {
         'christoomey/vim-tmux-navigator'
+    },
+
+    {
+        'folke/zen-mode.nvim', config = function() require('plugins.zen') end
+    },
+
+    {
+        'nvim-lualine/lualine.nvim', config = function() require('plugins.lualine') end
+    },
+
+    {
+        -- 'tjdevries/express_line.nvim', config = function() require('plugins.express-line') end
     },
 -- ----------------------------------------------
     -- LSP
