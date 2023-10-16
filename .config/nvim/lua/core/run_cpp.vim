@@ -4,7 +4,7 @@ function! s:compile_run_cpp() abort
   let src_path = expand('%:p:~')
   let src_noext = expand('%:p:~:r')
   " The building flags
-  let _flag = '-Wall -Wextra -std=c++11 -O2'
+  let _flag = '-Wall -Wextra -std=c++11 -O0'
 
   if executable('clang++')
     let prog = 'clang++'

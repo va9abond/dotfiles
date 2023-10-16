@@ -1,7 +1,12 @@
 vim.opt.encoding = "utf-8"
 
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.g.XkbSwitchEnabled = 1
+vim.g.XkbSwitchIMappings = { 'ru' }
+
+vim.wo.number = true
+vim.wo.relativenumber = true
+
+vim.o.completeopt = 'menuone,noselect'
 
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
@@ -13,6 +18,7 @@ vim.o.autoindent = true
 vim.o.cindent = true
 vim.o.expandtab = true
 vim.o.smarttab = true
+vim.o.breakindent = true
 
 vim.opt.wrap = false
 vim.o.swapfile = false
@@ -36,7 +42,7 @@ vim.opt.ignorecase = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8
+vim.opt.scrolloff = 9
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
 vim.opt.isfname:append("@-@")
@@ -51,5 +57,6 @@ vim.g.tagbar_sort = 0
 vim.g.load_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.netrw_banner = 0
-vim.g.netrw_liststyle = 3
-vim.g.netrw_browse_split = 3
+-- vim.g.netrw_liststyle = 3
+vim.g.netrw_browse_split = 0
+vim.g.netrw_winsize = 25

@@ -1,5 +1,7 @@
 require('core/base')
 require('core/binds')
 require('core/modules')
--- require('core/comp.vim')
+require('core/scripts')
+vim.api.nvim_command('source ~/.config/nvim/lua/core/run_cpp.vim')
+-- vim.api.nvim_command('source ~/.config/nvim/lua/core/presentation_mode.vim')
 require('core/after')

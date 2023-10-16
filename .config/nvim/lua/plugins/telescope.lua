@@ -1,4 +1,3 @@
--- TODO: lualine
 -- ----------------------------------------------
 local builtin  = require('telescope.builtin')
 local actions  = require('telescope.actions')
@@ -28,19 +27,17 @@ local my_hook  = function(filepath, bufnr, opts)
     end
 end
 -- ----------------------------------------------
-require('telescope').setup {
+require('telescope').setup
+{
     defaults = {
-
         preview = {
             mime_hook = my_hook
         },
-
         mappings = {
             i = {
                 ['<C-Bslash>'] = "which_key",
             },
         },
-
         picker = {
             find_files = {
                 find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
@@ -56,15 +53,34 @@ require('telescope').setup {
                     }
                 }
             },
+        },
+        extensions = {
+            fzf = {
+                fuzzy = true,
+                override_generic_sorter = true,
+                override_file_sorter = true,
+                case_mode = "smart_case",
+            }
         }
     }
 }
 
 
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+-- [Tj DeVries, nvim-kickstart]
+vim.keymap.set('n', '<leader>?',  builtin.oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>/', function()
+    builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+        winblend = 10,
+        previewer = false,
+    })
+end, { desc = '[/] Fuzzily search in current buffer' })
+
+vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[S]earch [F]iles' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
+vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>fr', builtin.registers, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<leader>fa', builtin.builtin, {})
-vim.keymap.set('n', '<leader>tr', builtin.treesitter, {})
-vim.keymap.set('n', '<leader>ft', builtin.tags, {})
+vim.keymap.set('n', '<leader>f?', builtin.builtin, {})
+
+require('telescope').load_extension('fzf')

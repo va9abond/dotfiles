@@ -2,7 +2,7 @@ local npairs = require("nvim-autopairs")
 local Rule = require('nvim-autopairs.rule')
 
 npairs.setup({
-    disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input" },
+    disable_filetype = { "TelescopePrompt", "guihua", "guihua_rust", "clap_input", "vimwiki", "text" },
 
     enable_check_bracket_line = false,
 

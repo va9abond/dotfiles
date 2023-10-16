@@ -1,6 +1,5 @@
--- TODO: vim-sanegx
 -- ----------------------------------------------
--- Bootstraping lazy.nvim
+    -- Bootstraping lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -23,29 +22,54 @@ local plugins = {
 
     {
         'nvim-treesitter/nvim-treesitter',
+        config = function() require('plugins.treesitter') end,
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter-textobjects'
+        },
         build = ':TSUpdate',
-        -- dependencies = { 'sheerun/vim-polyglot',
-            -- config = function() require('plugins.vim-polyglot') end
-            -- opts = { vim.g['polyglot_disabled'] = 'autoindent' }
-        -- },
-        config = function()
-            require('plugins.treesitter')
-        end
     },
 
     {
         'williamboman/mason.nvim',
-        config = function()
-            require('plugins.mason')
-        end
+        config = function() require('plugins.mason') end
     },
-    -- ----------------------------------------------
+-- ----------------------------------------------
+    -- Debug Adapter Protocol (DAP)
+
+    { 'mfussenegger/nvim-dap', },
+
+    { 'rcarriga/nvim-dap-ui', },
+
+    { 'theHamsta/nvim-dap-virtual-text' },
+
+    { 'nvim-telescope/telescope-dap.nvim' },
+-- ----------------------------------------------
     {
         'nvim-telescope/telescope.nvim',
         branch = '0.1.x',
-        config = function() require('plugins.telescope') end
+        config = function() require('plugins.telescope') end,
+        dependencies = {
+            'nvim-telescope/telescope-fzf-native.nvim',
+            'nvim-lua/plenary.nvim'
+        }
     },
-    -- ----------------------------------------------
+
+    {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+    },
+
+    -- {
+    --     'junegunn/fzf',
+    --     dir = "~/.fzf",
+    --     build = "./install --all"
+    -- },
+    --
+    -- {
+    --     'junegunn/fzf.vim',
+    --     config = function() require('plugins.fzfvim') end
+    -- },
+-- ----------------------------------------------
     -- Colorschemes
     { 'RRethy/nvim-base16' },
 
@@ -57,17 +81,23 @@ local plugins = {
         'ellisonleao/gruvbox.nvim',
         lazy = false,
         priority = 1000,
-        config = function()
-            require('plugins.gruvbox')
-        end
+        config = function() require('plugins.gruvbox') end
     },
 
     { 'folke/tokyonight.nvim' },
 
     -- { 'nanotech/jellybeans.vim' , lazy = false, priority = 1000, config = function() require('plugins.jellybeans') end },
 
-    { 'kabouzeid/nvim-jellybeans', lazy = false, priority = 1000, dependencies = { 'rktjmp/lush.nvim' } },
-    { 'Shatur/neovim-ayu',         lazy = false, priority = 1000 },
+    {
+        'kabouzeid/nvim-jellybeans',
+        lazy = false, priority = 1000,
+        dependencies = { 'rktjmp/lush.nvim' }
+    },
+
+    {
+        'Shatur/neovim-ayu',
+        lazy = false, priority = 1000
+    },
 
     { 'nekonako/xresources-nvim' },
 
@@ -76,17 +106,22 @@ local plugins = {
     { 'mhartington/oceanic-next' },
 
     { 'bluz71/vim-moonfly-colors' },
-    -- ----------------------------------------------
+-- ----------------------------------------------
+    -- { 'vim-scripts/DrawIt' },
+
+    { 'lyokha/vim-xkbswitch' },
+
     {
         'numToStr/Comment.nvim',
         lazy = false,
-        config = function()
-            require('Comment').setup()
-        end
+        config = function() require('Comment').setup() end
     },
 
+    { 'tpope/vim-surround' },
+
     {
-        'ThePrimeagen/harpoon'
+        'ThePrimeagen/harpoon',
+        config = function() require('plugins.harpoon') end
     },
 
     {
@@ -100,72 +135,46 @@ local plugins = {
         name = "barbecue",
         version = "*",
         dependencies = { "SmiteshP/nvim-navic" },
-        config = function()
-            require('plugins.barbecue')
-        end
+        config = function() require('plugins.barbecue') end
     },
 
-    {
-        'stevearc/aerial.nvim',
-        config = function()
-            require('plugins.aerial')
-        end
-    },
+    -- {
+    --     'stevearc/aerial.nvim',
+    --     config = function() require('plugins.aerial') end
+    -- },
 
     -- { 'preservim/tagbar' },
 
     { 'liuchengxu/vista.vim' },
 
     {
-        "Zeioth/compiler.nvim",
-        cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-        dependencies = { "stevearc/overseer.nvim" },
-        opts = {},
-    },
-
-    {
-        "stevearc/overseer.nvim",
-        commit = "3047ede61cc1308069ad1184c0d447ebee92d749",
-        cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-        opts = {
-            task_list = {
-                direction = "bottom",
-                min_height = 25,
-                max_height = 25,
-                default_detail = 1,
-                bindings = { ["q"] = function() vim.cmd("OverseerClose") end },
-            },
-        },
-    },
-
-    {
         'phaazon/hop.nvim',
         branch = 'v2',
-        config = function()
-            require('plugins.hop')
-        end
+        config = function() require('plugins.hop') end
+    },
+
+    { 'christoomey/vim-tmux-navigator' },
+
+    {
+        'folke/zen-mode.nvim',
+        config = function() require('plugins.zen') end
     },
 
     {
-        -- 'RRethy/vim-illuminate',
-        -- opts = { delay = 200 }
+        'nvim-lualine/lualine.nvim',
+        config = function() require('plugins.lualine') end
     },
 
     {
-        'christoomey/vim-tmux-navigator'
+        'lervag/vimtex',
+        config = function() require('plugins.vimtex') end
     },
 
     {
-        'folke/zen-mode.nvim', config = function() require('plugins.zen') end
+        'lewis6991/gitsigns.nvim',
+        config = function() require('plugins.gitsigns') end
     },
 
-    {
-        'nvim-lualine/lualine.nvim', config = function() require('plugins.lualine') end
-    },
-
-    {
-        -- 'tjdevries/express_line.nvim', config = function() require('plugins.express-line') end
-    },
 -- ----------------------------------------------
     -- LSP
 
@@ -205,20 +214,20 @@ local plugins = {
 
     {
         'windwp/nvim-autopairs',
-        event = "InsertEnter",
+        -- event = "InsertEnter",
         config = function()
             require('plugins.nvim-autopairs')
         end,
     },
 
     {
-        'ray-x/navigator.lua',
-        dependencies = { 'ray-x/guihua.lua', build = 'cd lua/fzy && make' },
-        config = function() require('plugins.lsp.navigator') end
+        'stevearc/dressing.nvim',
+        config = function() require('plugins.lsp.dressing') end
     },
 
     {
-        'p00f/clangd_extensions.nvim', config = function() require('plugins.clangd_extensions') end
+        'p00f/clangd_extensions.nvim',
+        config = function() require('plugins.clangd_extensions') end
     },
 
 -- ----------------------------------------------
