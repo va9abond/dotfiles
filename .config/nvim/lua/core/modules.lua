@@ -60,22 +60,16 @@ local plugins = {
     },
 
     -- {
-    --     'junegunn/fzf',
-    --     dir = "~/.fzf",
-    --     build = "./install --all"
+    --     "ibhagwan/fzf-lua",
+    --     dependencies = { "nvim-tree/nvim-web-devicons" },
+    --     config = function()
+    --         require('plugins.fzf_lua')
+    --     end
     -- },
-    --
-    -- {
-    --     'junegunn/fzf.vim',
-    --     config = function() require('plugins.fzfvim') end
-    -- },
+
 -- ----------------------------------------------
     -- Colorschemes
     { 'RRethy/nvim-base16' },
-
-    { 'blazkowolf/gruber-darker.nvim' },
-
-    { 'drsooch/gruber-darker-vim' },
 
     {
         'ellisonleao/gruvbox.nvim',
@@ -85,8 +79,6 @@ local plugins = {
     },
 
     { 'folke/tokyonight.nvim' },
-
-    -- { 'nanotech/jellybeans.vim' , lazy = false, priority = 1000, config = function() require('plugins.jellybeans') end },
 
     {
         'kabouzeid/nvim-jellybeans',
@@ -99,13 +91,6 @@ local plugins = {
         lazy = false, priority = 1000
     },
 
-    { 'nekonako/xresources-nvim' },
-
-    { 'RishabhRD/nvim-rdark' },
-
-    { 'mhartington/oceanic-next' },
-
-    { 'bluz71/vim-moonfly-colors' },
 -- ----------------------------------------------
     -- { 'vim-scripts/DrawIt' },
 
@@ -138,14 +123,7 @@ local plugins = {
         config = function() require('plugins.barbecue') end
     },
 
-    -- {
-    --     'stevearc/aerial.nvim',
-    --     config = function() require('plugins.aerial') end
-    -- },
-
-    -- { 'preservim/tagbar' },
-
-    { 'liuchengxu/vista.vim' },
+    { 'liuchengxu/vista.vim' }, -- alts: preservim/tagbar, stevearc/aerial.nvim
 
     {
         'phaazon/hop.nvim',
@@ -212,13 +190,13 @@ local plugins = {
         end,
     },
 
-    {
-        'windwp/nvim-autopairs',
-        -- event = "InsertEnter",
-        config = function()
-            require('plugins.nvim-autopairs')
-        end,
-    },
+    -- {
+    --     'windwp/nvim-autopairs',
+    --     -- event = "InsertEnter",
+    --     config = function()
+    --         require('plugins.nvim-autopairs')
+    --     end,
+    -- },
 
     {
         'stevearc/dressing.nvim',

@@ -19,7 +19,10 @@ require('nvim-treesitter.configs').setup {
         -- disable = { "latex" }
     },
 
-    indent = { enable = true },
+    indent = {
+        enable = false,
+        -- disable = { "bash", "cpp", "julia"}
+    },
 
     autotag = { enable = true },
 }

@@ -15,8 +15,11 @@ local function is_vimwiki()
 end
 
 -- vim.api.nvim_create_autocmd()
+-- if vim.bo.filetype ~= "text" then
 map('i', 'jk', '<ESC>')
-map('i', 'ол', 'ол')
+-- end
+
+-- map('i', 'ол', 'ол')
 
 vim.keymap.set('n', '<Bslash>h', '<cmd>nohlsearch<cr>', { noremap = true, silent = true })
 

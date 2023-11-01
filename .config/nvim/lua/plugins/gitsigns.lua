@@ -42,7 +42,7 @@ gs.setup {
     },
 }
 
--- vim.keymap.set('n', '<leader>hp', gs.preview_hunk, { desc = 'Preview git hunk' })
+vim.keymap.set('n', '<leader>gp', gs.preview_hunk_inline, { desc = 'Preview git hunk' })
 
 vim.keymap.set({'n', 'v'}, ']c', function()
     if vim.wo.diff then return ']c' end

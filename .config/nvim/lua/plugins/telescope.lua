@@ -67,7 +67,7 @@ require('telescope').setup
 
 
 -- [Tj DeVries, nvim-kickstart]
-vim.keymap.set('n', '<leader>?',  builtin.oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader>fo',  builtin.oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader>/', function()
     builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         winblend = 10,
@@ -81,6 +81,6 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[S]earch by [G]re
 vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>fr', builtin.registers, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>f?', builtin.builtin, {})
+vim.keymap.set('n', '<leader>?', builtin.builtin, {})
 
 require('telescope').load_extension('fzf')
