@@ -1,0 +1,31 @@
+% Thank SeniorMars
+% https://github.com/SeniorMars/dotfiles/blob/master/latex_template/template.pdf
+% ------------------------------------------------------------------------------
+\documentclass[a4paper,14pt]{article}
+% book report(no part) article(no part/chapter) letter slides
+%      ------          -------
+% chapter c section c subsection c subsubsection c paragraph c subparagraph
+
+\input{preamble}
+\input{macros}
+\input{letterfonts}
+
+\title{\Huge{My Class}\\My Subtitle}
+\author{\huge{Rustem Sirazetdinov}}
+\date{\today}
+
+\begin{document}
+
+    \maketitle
+    \newpage
+    % \pdfbookmark[section]{\contentsname}{toc}% \pdfbookmark[<level>]{<title>}{<dest>}
+    \tableofcontents
+    \pagebreak
+
+    \chapter{No of Chapter}
+    \section{Random section name}
+
+    \section{Random}
+    \section{Algorithms}
+
+\end{document}
