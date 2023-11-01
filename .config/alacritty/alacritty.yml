@@ -1,8 +1,17 @@
+# env:
+#   TERM: alacritty
+
+selection:
+  save_to_clipboard: true
+  text: CellBackground
+
 window:
+  opacity: 1.0
   dimensions:
     columns: 100
     lines: 27
-  decorations: full
+  decorations: none # full
+  dynamic_title: true
 
 scrolling:
   history: 5000
@@ -26,9 +35,13 @@ font:
 
   size: 12.0
 
+cursor:
+  style:
+    shape: Block
+  vi_mode_style:
+    shape: Beam
 
-key_bindings:
-    # (Windows, Linux, and BSD only)
+key_bindings: # (Windows, Linux, and BSD only)
   - { key: V,         mods: Control|Shift, action: Paste                       }
   - { key: C,         mods: Control|Shift, action: Copy                        }
   # - { key: Insert,    mods: Shift,         action: PasteSelection              }
