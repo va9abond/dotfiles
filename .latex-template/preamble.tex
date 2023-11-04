@@ -2,7 +2,7 @@
 % PACKAGES
 % ----------------------------------
 
-\usepackage[T2A]{fontenc}
+% \usepackage[T2A]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[english,russian]{babel}
 \usepackage[tmargin=2cm,rmargin=1in,lmargin=1in,margin=0.85in,bmargin=2cm,footskip=.2in]{geometry}
@@ -10,29 +10,25 @@
 \usepackage{lipsum}
 \usepackage{extsizes}
 \usepackage{cmap}
-\usepackage[varbb]{newpxmath}
 \usepackage{xfrac}
-\usepackage[makeroom]{cancel}
-\usepackage{mathtools}
-\usepackage{bookmark}
-\usepackage{booktabs}
 \usepackage{enumitem}
+
 \usepackage{hyperref,theoremref}
-\hypersetup{
-	pdftitle={Assignment},
-	colorlinks=true, linkcolor=doc!90,
-	bookmarksnumbered=true,
-	bookmarksopen=true
-}
 \usepackage{cleveref}
+\usepackage{nameref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=blue,
+    pdftitle={assignment},
+}
+\urlstyle{same}
 \newcommand\myref[1]{\hyperref[#1]{#1}}
 
-\usepackage{varwidth}
 \usepackage{etoolbox}
-\usepackage{nameref}
 \usepackage{multicol,array}
 \usepackage{pdfpages}
-\usepackage{transparent}
 
 \usepackage{graphicx}
 \graphicspath{ {./visual/} }
@@ -42,8 +38,8 @@
 
 \usepackage{cite}
 \usepackage{csquotes}
-% \renewcommand{\refname}{Список источников}  % По умолчанию "Список литературы" (article)
-% \renewcommand{\bibname}{Литература}  % По умолчанию "Литература" (book и report)
+% \renewcommand{\refname}{Список источников}  % default: "Список литературы" (article)
+% \renewcommand{\bibname}{Литература}  % default: "Литература" (book и report)
 
 
 
