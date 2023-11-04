@@ -16,10 +16,10 @@ end
 
 -- vim.api.nvim_create_autocmd()
 -- if vim.bo.filetype ~= "text" then
-map('i', 'jk', '<ESC>')
 -- end
 
--- map('i', 'ол', 'ол')
+map('i', 'jk', '<ESC>')
+map('i', 'ол', 'ол')
 
 vim.keymap.set('n', '<Bslash>h', '<cmd>nohlsearch<cr>', { noremap = true, silent = true })
 
@@ -32,8 +32,8 @@ map('n', 'N', 'Nzz')
 map('n', '<leader>t',  '<cmd>enew<cr>')
 -- map('n', '<leader>bn', '<cmd>bnext<cr>')
 -- map('n', '<leader>bp', '<cmd>bprevious<cr>')
-map('n', '<C-]>', '<cmd>bnext<cr>')
-map('n', '<C-[>', '<cmd>bprevious<cr>')
+map('n', '<C-n>', '<cmd>bnext<cr>')
+map('n', '<C-p>', '<cmd>bprevious<cr>')
 map('n', '<leader>x', '<cmd>bd<cr>')
 map('n', '<leader>X', '<cmd>bd!<cr>')
 -- map('n', '<leader>bl', '<cmd>ls<cr>')
@@ -68,7 +68,7 @@ map('o', 'A', ':<C-U>normal! mzggVG<CR>`z')
 map('x', 'A', ':<C-U>normal! ggVG<CR>')
 
 -- binds NvimTree
-map({'n', 'i'}, '<C-n>', '<cmd>NvimTreeToggle<cr>')
+-- map({'n', 'i'}, '<C-n>', '<cmd>NvimTreeToggle<cr>')
 -- map('i', '<C-n>', '<cmd>NvimTreeToggle<cr>')
 
 -- the greatest remap ever, thx [ThePrimeagen, asbjornHaland, sdaschner]

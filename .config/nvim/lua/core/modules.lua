@@ -168,20 +168,34 @@ local plugins = {
 
     {
         'hrsh7th/nvim-cmp',
-        event = "InsertEnter",
+        event = { "InsertEnter", "CmdlineEnter" },
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
             'hrsh7th/cmp-buffer',
             'hrsh7th/cmp-path',
             'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-vsnip',
-            'hrsh7th/vim-vsnip',
+            -- 'hrsh7th/cmp-vsnip',
+            -- 'hrsh7th/vim-vsnip',
 
         },
         config = function()
             require('plugins.lsp.nvim-cmp')
         end
     },
+
+    {
+        'L3MON4D3/LuaSnip',
+        version = "v.2*",
+        build = "make install_jsregexp",
+        dependencies = { 'rafamadriz/friendly-snippets' },
+        config = function()
+            require('plugins.luasnip')
+        end
+    },
+
+    { 'saadparwaiz1/cmp_luasnip'},
+
+    { 'rafamadriz/friendly-snippets' },
 
     {
         'onsails/lspkind.nvim',
@@ -192,7 +206,7 @@ local plugins = {
 
     -- {
     --     'windwp/nvim-autopairs',
-    --     -- event = "InsertEnter",
+    --     event = "InsertEnter",
     --     config = function()
     --         require('plugins.nvim-autopairs')
     --     end,

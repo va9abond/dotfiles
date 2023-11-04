@@ -16,11 +16,12 @@ require('nvim-treesitter.configs').setup {
 
     highlight = {
         enable = true,
-        -- disable = { "latex" }
+        disable = { "latex" }
     },
 
     indent = {
         enable = false,
+        disable = { "latex" }
         -- disable = { "bash", "cpp", "julia"}
     },
 
