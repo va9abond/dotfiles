@@ -1,6 +1,10 @@
--- setup must be called before loading the colorscheme
--- Default options:
+-- ---------------------------------------------------------
+                                            -- Custom colors
+-- local _mycolors = require('lua.colors.mycolors')
+-- local _myblack = _mycolors.black
+-- ---------------------------------------------------------
 require("gruvbox").setup({
+    terminal_colors = true,
     undercurl = true,
     underline = true,
     bold = true,
@@ -21,10 +25,12 @@ require("gruvbox").setup({
     contrast = "", -- can be "hard", "soft" or empty string
 
     palette_overrides = {
-        dark0 = '#1d2021' -- dark0_hard
+        dark0 = _myblack
     },
 
     overrides = {},
     dim_inactive = false,
     transparent_mode = false,
 })
+
+-- vim.cmd[[ colorscheme gruvbox ]]

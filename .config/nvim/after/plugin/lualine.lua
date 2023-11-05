@@ -13,50 +13,50 @@ local colors = {
     ship_cove   = '#8197bf'
 }
 
-local myTheme = {
+local _mytheme = {
     normal = {
-        a = { bg = colors.background, fg = colors.grey },
-        b = { bg = colors.background, fg = colors.grey },
-        c = { bg = colors.background, fg = colors.grey },
+        a = { bg = colors.black, fg = colors.grey },
+        b = { bg = colors.black, fg = colors.grey },
+        c = { bg = colors.black, fg = colors.grey },
     },
     insert = {
-        a = { bg = colors.background, fg = colors.grey },
-        b = { bg = colors.background, fg = colors.grey },
-        c = { bg = colors.background, fg = colors.grey },
+        a = { bg = colors.black, fg = colors.grey },
+        b = { bg = colors.black, fg = colors.grey },
+        c = { bg = colors.black, fg = colors.grey },
     },
     visual = {
-        a = { bg = colors.background, fg = colors.grey },
-        b = { bg = colors.background, fg = colors.grey },
-        z = { bg = colors.background, fg = colors.grey },
+        a = { bg = colors.black, fg = colors.grey },
+        b = { bg = colors.black, fg = colors.grey },
+        z = { bg = colors.black, fg = colors.grey },
     },
     replace = {
-        a = { bg = colors.background, fg = colors.grey },
-        b = { bg = colors.background, fg = colors.grey },
-        c = { bg = colors.background, fg = colors.grey },
+        a = { bg = colors.black, fg = colors.white },
+        b = { bg = colors.black, fg = colors.grey },
+        c = { bg = colors.black, fg = colors.grey },
     },
     command = {
-        a = { bg = colors.background, fg = colors.white, gui = 'bold' },
-        b = { bg = colors.background, fg = colors.grey },
-        c = { bg = colors.background, fg = colors.grey },
+        a = { bg = colors.black, fg = colors.white, gui = 'bold' },
+        b = { bg = colors.black, fg = colors.grey },
+        c = { bg = colors.black, fg = colors.grey },
     },
     innactive = {
-        a = { bg = colors.background, fg = colors.grey },
-        b = { bg = colors.background, fg = colors.grey },
-        c = { bg = colors.background, fg = colors.grey },
+        a = { bg = colors.black, fg = colors.grey },
+        b = { bg = colors.black, fg = colors.grey },
+        c = { bg = colors.black, fg = colors.grey },
     },
 }
 
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = myTheme,
-        -- theme = 'gruvbox',
-        -- tmeme = 'auto',
+        theme = _mytheme,
+        -- theme = 'gruvbox', -- auto
         -- component_separators = { left = '', right = ''},
         -- section_separators = { left = '', right = ''},
         component_separators = { left = '', right = ''},
         section_separators = { left = '', right = ''},
-        disabled_filetypes = { {'pdf'},
+        disabled_filetypes = {
+            {'pdf' },
             statusline = {},       -- only ignores the ft for statusline.
             winbar = {},           -- only ignores the ft for winbar.
         },
@@ -91,52 +91,23 @@ require('lualine').setup {
     },
 
     sections = {
-        lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
+        lualine_a = {'branch'},
+        lualine_b = {'diff', 'diagnostics'},
         lualine_c = {'filename'},
-        lualine_x = {'encoding'}, -- fileformat, filetype
-        lualine_y = {'location'},
+        lualine_x = {'location'}, -- fileformat | filetype | encoding
+        lualine_y = {},
         lualine_z = {'progress'}
     },
 
     inactive_sections = {
         lualine_a = {},
-        lualine_b = {},
+        lualine_b = {'branch'},
         lualine_c = {'filename'},
         lualine_x = {'location'},
-        lualine_y = {'progress'},
-        lualine_z = {}
+        lualine_y = {},
+        lualine_z = {'progress'}
     },
 
-    -- tabline = {
-    --     -- lualine_a = {
-    --     --     'tabs',
-    --     --     max_length = vim.o.columns / 3,
-    --     --     mode = 1 -- 0: tab_nr, 2: tab_nr + tab_name
-    --     -- },
-    --     lualine_a = {
-    --         'buffers',
-    --     },
-    --     -- lualine_c = {
-    --     --     require('tabline').tabline_tabs
-    --     -- },
-    --     -- lualine_c = {
-    --     --     'filename',
-    --     --     file_status = false,
-    --     --     newfile_status = false,
-    --     --     path = 4
-    --     -- },
-    --     -- lualine_x = {
-    --     --     require('tabline').tabline_buffers
-    --     -- },
-    --     lualine_z = {
-    --         'tabs'
-    --     }
-    -- },
-
-    winbar = {
-        -- lualine_z = {'filename'}
-    },
     inactive_winbar = {},
     extensions = {}
 }

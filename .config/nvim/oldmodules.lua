@@ -1,5 +1,6 @@
 -- ----------------------------------------------
-    -- Bootstraping lazy.nvim
+-- Bootstraping lazy.nvim
+-- ----------------------------------------------
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -44,20 +45,20 @@ local plugins = {
 
     { 'nvim-telescope/telescope-dap.nvim' },
 -- ----------------------------------------------
-    {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
-        config = function() require('plugins.telescope') end,
-        dependencies = {
-            'nvim-telescope/telescope-fzf-native.nvim',
-            'nvim-lua/plenary.nvim'
-        }
-    },
+    -- {
+    --     'nvim-telescope/telescope.nvim',
+    --     branch = '0.1.x',
+    --     config = function() require('plugins.telescope') end,
+    --     dependencies = {
+    --         'nvim-telescope/telescope-fzf-native.nvim',
+    --         'nvim-lua/plenary.nvim'
+    --     }
+    -- },
 
-    {
-        'nvim-telescope/telescope-fzf-native.nvim',
-        build = 'make',
-    },
+    -- {
+    --     'nvim-telescope/telescope-fzf-native.nvim',
+    --     build = 'make',
+    -- },
 
     -- {
     --     "ibhagwan/fzf-lua",
@@ -68,8 +69,8 @@ local plugins = {
     -- },
 
 -- ----------------------------------------------
-    -- Colorschemes
-    { 'RRethy/nvim-base16' },
+    -- Colors
+-- ----------------------------------------------
 
     {
         'ellisonleao/gruvbox.nvim',
@@ -78,7 +79,6 @@ local plugins = {
         config = function() require('plugins.gruvbox') end
     },
 
-    { 'folke/tokyonight.nvim' },
 
     {
         'kabouzeid/nvim-jellybeans',
@@ -86,72 +86,43 @@ local plugins = {
         dependencies = { 'rktjmp/lush.nvim' }
     },
 
-    {
-        'Shatur/neovim-ayu',
-        lazy = false, priority = 1000
-    },
-
 -- ----------------------------------------------
-    -- { 'vim-scripts/DrawIt' },
 
-    { 'lyokha/vim-xkbswitch' },
 
-    {
-        'numToStr/Comment.nvim',
-        lazy = false,
-        config = function() require('Comment').setup() end
-    },
 
-    { 'tpope/vim-surround' },
 
-    {
-        'ThePrimeagen/harpoon',
-        config = function() require('plugins.harpoon') end
-    },
 
-    {
-        'nvim-tree/nvim-tree.lua',
-        dependencies = { 'nvim-tree/nvim-web-devicons' },
-        config = function() require('plugins.nvimtree') end
-    },
 
-    {
-        "utilyre/barbecue.nvim",
-        name = "barbecue",
-        version = "*",
-        dependencies = { "SmiteshP/nvim-navic" },
-        config = function() require('plugins.barbecue') end
-    },
 
-    { 'liuchengxu/vista.vim' }, -- alts: preservim/tagbar, stevearc/aerial.nvim
+    -- { 'liuchengxu/vista.vim' }, -- alts: preservim/tagbar, stevearc/aerial.nvim
 
-    {
-        'phaazon/hop.nvim',
-        branch = 'v2',
-        config = function() require('plugins.hop') end
-    },
+    -- {
+    --     'phaazon/hop.nvim',
+    --     branch = 'v2',
+    --     config = function() require('plugins.hop') end
+    -- },
 
-    { 'christoomey/vim-tmux-navigator' },
+    -- { 'christoomey/vim-tmux-navigator' },
 
-    {
-        'folke/zen-mode.nvim',
-        config = function() require('plugins.zen') end
-    },
+    -- {
+    --     'folke/zen-mode.nvim',
+    --     config = function() require('plugins.zen') end
+    -- },
 
-    {
-        'nvim-lualine/lualine.nvim',
-        config = function() require('plugins.lualine') end
-    },
+    -- {
+    --     'nvim-lualine/lualine.nvim',
+    --     config = function() require('plugins.lualine') end
+    -- },
 
-    {
-        'lervag/vimtex',
-        config = function() require('plugins.vimtex') end
-    },
+    -- {
+    --     'lervag/vimtex',
+    --     config = function() require('plugins.vimtex') end
+    -- },
 
-    {
-        'lewis6991/gitsigns.nvim',
-        config = function() require('plugins.gitsigns') end
-    },
+    -- {
+    --     'lewis6991/gitsigns.nvim',
+    --     config = function() require('plugins.gitsigns') end
+    -- },
 
 -- ----------------------------------------------
     -- LSP
@@ -212,15 +183,10 @@ local plugins = {
     --     end,
     -- },
 
-    {
-        'stevearc/dressing.nvim',
-        config = function() require('plugins.lsp.dressing') end
-    },
-
-    {
-        'p00f/clangd_extensions.nvim',
-        config = function() require('plugins.clangd_extensions') end
-    },
+    -- {
+    --     'stevearc/dressing.nvim',
+    --     config = function() require('plugins.lsp.dressing') end
+    -- },
 
 -- ----------------------------------------------
 }
@@ -228,3 +194,4 @@ local plugins = {
 local opts = {}
 -- ----------------------------------------------
 require("lazy").setup(plugins, opts)
+
