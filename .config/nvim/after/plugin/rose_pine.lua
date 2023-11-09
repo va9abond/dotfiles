@@ -3,6 +3,7 @@
 -- TODO: add custom colors as in gruvbox.lua
 local _myblack = '#000000'
 local _mygreen = '#114538'
+local _mywhite = '#edede8'
 -- ---------------------------------------------------------
 require('rose-pine').setup({
     --- @usage 'auto'|'main'|'moon'|'dawn'

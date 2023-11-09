@@ -6,6 +6,7 @@ local Rule = require('nvim-autopairs.rule')
 
 npairs.setup ({
     disable_filetype = { "TelescopePrompt", "spectre_panel", "guihua", "guihua_rust", "clap_input", "vimwiki", "text" },
+    -- map_cr = true,
     check_ts = true,
 })
 
@@ -28,6 +29,7 @@ npairs.add_rules({
   Rule("$", "$",{"tex", "latex"})
     -- don't add a pair if the next character is %
     :with_pair(cond.not_after_regex("%%"))
+    :with_pair(cond.not_after_regex("$$"))
     -- don't add a pair if  the previous character is xxx
     :with_pair(cond.not_before_regex("xxx", 3))
     -- don't move right when repeat character
@@ -60,4 +62,4 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local cmp = require("cmp")
 
 -- make autopairs and completion work together
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())

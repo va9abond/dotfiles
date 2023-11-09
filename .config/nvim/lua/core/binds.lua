@@ -20,8 +20,8 @@ vim.keymap.set('c', '<C-k>', '<S-Right>')
 map('n', '<C-n>', '<cmd>bnext<cr>')
 map('n', '<C-p>', '<cmd>bprevious<cr>')
 map('n', '<leader>t', '<cmd>enew<cr>')
-map('n', '<leader>x', '<cmd>bd<cr>')
-map('n', '<leader>X', '<cmd>bd!<cr>')
+map('n', '<leader>q', '<cmd>bd<cr>')
+map('n', '<leader>Q', '<cmd>bd!<cr>')
 -- ---------------------------------------------------------
                            -- Inserts blank line below/above
 map('n', '<CR>', 'o<ESC>')
@@ -43,11 +43,11 @@ map('n',        '<leader>D', [["+D]])
 map({'n', 'v'}, '<leader>p', [["+p]])
 map('n',        '<leader>P', [["+P]])
 -- ---------------------------------------------------------
-                                           -- tmux navigator
-map({ 'n', 'i' }, '<C-h>', '<CMD>TmuxNavigateLeft<CR>')
-map({ 'n', 'i' }, '<C-j>', '<CMD>TmuxNavigateDown<CR>')
-map({ 'n', 'i' }, '<C-k>', '<CMD>TmuxNavigateUp<CR>')
-map({ 'n', 'i' }, '<C-l>', '<CMD>TmuxNavigateRight<CR>')
+                                    -- Splits navigation
+map({ 'n', 'i' }, '<C-h>', '<C-w><C-h>')
+map({ 'n', 'i' }, '<C-j>', '<C-w><C-j>')
+map({ 'n', 'i' }, '<C-k>', '<C-w><C-k>')
+map({ 'n', 'i' }, '<C-l>', '<C-w><C-l>')
 -- ---------------------------------------------------------
                                                    -- tagbar
 -- vim.keymap.set('n', '<Bslash>t', '<cmd>AerialToggle!<CR>')

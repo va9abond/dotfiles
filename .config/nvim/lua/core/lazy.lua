@@ -41,36 +41,22 @@ local plugins = {
         }
     },
 
-    { 'onsails/lspkind.nvim' },
                                            -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
         event = "InsertEnter",
-        dependencins = {
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-cmdline',
-            'hrsh7th/cmp-nvim-lua',
-            'micangl/cmp-vimtex',
+        dependencies = {
+            { "hrsh7th/cmp-nvim-lsp", lazy = false },
+            { 'hrsh7th/cmp-buffer', lazy = false },
+            { 'hrsh7th/cmp-path', lazy = false },
+            { 'hrsh7th/cmp-cmdline', lazy = false },
+            { 'hrsh7th/cmp-nvim-lua', lazy = false },
+            { 'onsails/lspkind.nvim', lazy = false },
                                                  -- Snippets
-            'L3MON4D3/LuaSnip',
-            'saadparwaiz1/cmp_luasnip',
-            'rafamadriz/friendly-snippets'
+            { 'L3MON4D3/LuaSnip' },
+            { 'saadparwaiz1/cmp_luasnip' },
+            { 'rafamadriz/friendly-snippets' },
         },
-    },
-
-    {
-        'hrsh7th/cmp-buffer',
-        'hrsh7th/cmp-path',
-        'hrsh7th/cmp-cmdline',
-        'hrsh7th/cmp-nvim-lua',
-        'micangl/cmp-vimtex',
-    },
-
-    {
-        'L3MON4D3/LuaSnip',
-        'saadparwaiz1/cmp_luasnip',
-        'rafamadriz/friendly-snippets'
     },
 
 -- ---------------------------------------------------------
@@ -126,7 +112,7 @@ local plugins = {
         config = true,
     },
 
-    { 'christoomey/vim-tmux-navigator' },
+    -- { 'christoomey/vim-tmux-navigator' },
 
     { 'lervag/vimtex' },
 
@@ -170,6 +156,33 @@ local plugins = {
         lazy = false, priority = 1000,
         dependencies = { 'rktjmp/lush.nvim' }
     },
+
+-- ---------------------------------------------------------
+                                                 -- Markdown
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+        build = "cd app && yarn install",
+        init = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+        end,
+        ft = { "markdown" },
+    },
+
+    -- {
+    --     'toppair/peek.nvim',
+    --     build = 'deno task --quiet build:fast',
+    --     config = function()
+    --         require('peek').setup({
+    --             auto_load = false,
+    --             syntax = false,
+    --             theme = 'dark',
+    --             app = { 'chromium', '--new-window' },
+    --             vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {}),
+    --             vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
+    --         })
+    --     end
+    -- },
 
 -- ---------------------------------------------------------
     { 'nvim-lua/plenary.nvim' },

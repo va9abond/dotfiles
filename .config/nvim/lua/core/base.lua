@@ -2,6 +2,10 @@ vim.opt.encoding = "utf-8"
 vim.opt.showcmd = true
 -- vim.opt.showmatch = true
 
+-- vim.opt.pumblend = 17
+-- vim.opt.wildmode = "longest:full"
+-- vim.opt.wildoptions = "pum"
+
 -- vim.g.XkbSwitchEnabled = 1
 -- vim.g.XkbSwitchIMappings = { 'ru' }
 
@@ -10,14 +14,14 @@ vim.opt.mouse = "a"
 vim.wo.number = true
 vim.wo.relativenumber = true
 
-vim.o.completeopt = 'menuone,noselect'
+-- vim.opt.completeopt = {"menuone", "noselect", "menu", "preview"}
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smarttab = true
-
+vim.opt.autoindent = true
 vim.opt.smartindent = true
 vim.opt.cindent = true
 

@@ -47,8 +47,10 @@ local _on_attach = function(client, bufnr)
     opts.desc = "Show documentation for what is under cursor"
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-    opts.desc = "Show type signature"
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    -- opts.desc = "Show type signature"
+    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+
+    -- vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
 end
 
 -- ---------------------------------------------------------
@@ -57,8 +59,8 @@ local lspconfig = require('lspconfig')
 local default_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 
-                                          -- pyright , julia
-local other_servers = { 'pyright', 'julials' }
+                                -- pyright , julia, marksman
+local other_servers = { 'pyright', 'julials', 'marksman' }
 
 for _, lsp in ipairs(other_servers) do
     lspconfig[lsp].setup({
