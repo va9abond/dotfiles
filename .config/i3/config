@@ -15,6 +15,8 @@ font pango:CaskaydiaCove NF 12
 for_window [class="^.*"] border pixel 2
 for_window [class="^.*"] client.fucused
 
+# do not focus preview window on open
+no_focus [title="^Peek preview$"]
 
 exec --no-startup-id xinput -set-prop 10 317 0.6
 exec --no-startup-id xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144 --left-of eDP
@@ -127,10 +129,10 @@ bindsym $mod+Shift+$right move right 40 px
 # bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Ctrl+h split h; exec notify-send "tile horizontally"
+# bindsym $mod+Ctrl+h split h; exec notify-send "tile horizontally"
 
 # split in vertical orientation
-bindsym $mod+Ctrl+x split v; exec notify-send "tile vertically"
+# bindsym $mod+Ctrl+x split v; exec notify-send "tile vertically"
 
 bindsym $mod+q split toggle
 
@@ -176,7 +178,6 @@ set $ws8 "8"
 set $ws9 "9"
 # set $ws10 "10"
 
-bindsym $mod+Shift+n move workspace to output next
 
 workspace $ws1 output HDMI-A-0
 workspace $ws2 output HDMI-A-0
@@ -190,6 +191,8 @@ workspace $ws9 output eDP
 
 workspace_auto_back_and_forth yes
 
+# bindsym $mod+Shift+n move workspace to next
+# bindsym $mod+Shift+p move workspace to prev
 # switch to workspace
 bindsym $mod+n workspace next
 bindsym $mod+p workspace prev
