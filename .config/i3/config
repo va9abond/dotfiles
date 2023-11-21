@@ -184,7 +184,7 @@ workspace $ws2 output HDMI-A-0
 workspace $ws3 output eDP
 workspace $ws4 output eDP
 workspace $ws5 output eDP
-workspace $ws6 output eDP
+workspace $ws6 output HDMI-A-0
 workspace $ws7 output eDP
 workspace $ws8 output eDP
 workspace $ws9 output eDP
