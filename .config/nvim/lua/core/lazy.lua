@@ -38,7 +38,7 @@ local plugins = {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
-        }
+        },
     },
 
                                            -- Autocompletion
@@ -60,6 +60,10 @@ local plugins = {
     },
 
 -- ---------------------------------------------------------
+                                                      -- C++
+    { 'p00f/clangd_extensions.nvim', lazy = false },
+
+-- ---------------------------------------------------------
                                                -- Treesitter
     {
         'nvim-treesitter/nvim-treesitter',
@@ -72,6 +76,13 @@ local plugins = {
 
 -- ---------------------------------------------------------
                              -- Debug Adapter Protocol (DAP)
+    { 'mfussenegger/nvim-dap', },
+
+    { 'rcarriga/nvim-dap-ui', },
+
+    { 'theHamsta/nvim-dap-virtual-text' },
+
+    { 'nvim-telescope/telescope-dap.nvim' },
 -- ---------------------------------------------------------
                                                       -- Git
     { 'lewis6991/gitsigns.nvim' },
@@ -116,7 +127,7 @@ local plugins = {
 
     { 'lervag/vimtex' },
 
-    -- { 'lyokha/vim-xkbswitch' },
+    { 'lyokha/vim-xkbswitch' },
 
 -- ---------------------------------------------------------
                                                      --  GUI

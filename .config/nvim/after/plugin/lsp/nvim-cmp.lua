@@ -81,6 +81,7 @@ require('cmp').setup({
         { name = "vimtex",   max_item_count = 5  },
         { name = "nvim_lsp", max_item_count = 5  },
         { name = "luasnip",  max_item_count = 8  },
+        { name = "treesitter" },
     }, {
         { name = "path"     },
         { name = "buffer", max_item_count = 4, keyword_length = 4 },
@@ -91,6 +92,9 @@ require('cmp').setup({
             cmp.config.compare.offset,
             cmp.config.compare.exact,
             cmp.config.compare.score,
+            cmp.config.compare.recently_used,
+
+            require("clangd_extensions.cmp_scores"),
 
             -- Thanks to TJ DeVries
             function(entry1, entry2)
@@ -124,6 +128,7 @@ require('cmp').setup({
                 nvim_lua      = "[API]",
                 vim_tex       = "[Vimtex]",
                 latex_symbols = "[Latex]",
+                treesitter    = "[TS]",
             },
             maxwidth = 25,
             ellipsis_char = "...",

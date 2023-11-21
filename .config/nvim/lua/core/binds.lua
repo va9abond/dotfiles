@@ -20,8 +20,9 @@ vim.keymap.set('c', '<C-k>', '<S-Right>')
 map('n', '<C-n>', '<cmd>bnext<cr>')
 map('n', '<C-p>', '<cmd>bprevious<cr>')
 map('n', '<leader>t', '<cmd>enew<cr>')
-map('n', '<leader>q', '<cmd>bd<cr>')
-map('n', '<leader>Q', '<cmd>bd!<cr>')
+map('n', '<leader>x', '<cmd>bd<cr>')
+map('n', '<leader>q', '<cmd>q<cr>')
+map('n', '<leader>Q', '<cmd>q!<cr>')
 -- ---------------------------------------------------------
                            -- Inserts blank line below/above
 map('n', '<CR>', 'o<ESC>')
@@ -42,6 +43,11 @@ map({'n', 'v'}, '<leader>d', [["+d]])
 map('n',        '<leader>D', [["+D]])
 map({'n', 'v'}, '<leader>p', [["+p]])
 map('n',        '<leader>P', [["+P]])
+
+-- map("x", "p", )
+-- ---------------------------------------------------------
+                                      -- Where do they lead?
+map('n', 'x', '"_x')
 -- ---------------------------------------------------------
                                     -- Splits navigation
 map({ 'n', 'i' }, '<C-h>', '<C-w><C-h>')
@@ -49,19 +55,22 @@ map({ 'n', 'i' }, '<C-j>', '<C-w><C-j>')
 map({ 'n', 'i' }, '<C-k>', '<C-w><C-k>')
 map({ 'n', 'i' }, '<C-l>', '<C-w><C-l>')
 -- ---------------------------------------------------------
+-- Goes to the first line above/below that isn't whitespace
+--
+-- ---------------------------------------------------------
                                                    -- tagbar
 -- vim.keymap.set('n', '<Bslash>t', '<cmd>AerialToggle!<CR>')
 -- vim.keymap.set('n', '<Bslash>t', '<cmd>Vista!!<CR>')
 -- ---------------------------------------------------------
                                             -- Zooming panes
 vim.keymap.set('n', '<leader>z', '<C-w>|')
-vim.keymap.set('n', '<leader>Z', '<C-w>=')
+vim.keymap.set('n', '<leader>=', '<C-w>=')
 -- ---------------------------------------------------------
                                              -- Panes resize
--- vim.keymap.set('n', '+', '<Nop>', { silent = true })
--- vim.keymap.set('n', '-', '<Nop>', { silent = true })
--- vim.keymap.set('n', '+', '<cmd>res +5<cr>')
--- vim.keymap.set('n', '-', '<cmd>res -5<cr>')
+vim.keymap.set('n', '<C-Left>', '<cmd>vertical resize -5<cr>')
+vim.keymap.set('n', '<C-Right>', '<cmd>vertical resize +5<cr>')
+vim.keymap.set('n', '<C-Up>', '<cmd>res -5<cr>')
+vim.keymap.set('n', '<C-Down>', '<cmd>res +5<cr>')
 -- ---------------------------------------------------------
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -91,9 +100,9 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
 -- ---------------------------------------------------------
                                                   -- Trouble
-vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
-vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)
-vim.keymap.set("n", "<leader>xl", function() require("trouble").toggle("loclist") end)
+vim.keymap.set("n", "<space>x", function() require("trouble").toggle() end)
+vim.keymap.set("n", "<space>q", function() require("trouble").toggle("quickfix") end)
+vim.keymap.set("n", "<space>l", function() require("trouble").toggle("loclist") end)
 -- ---------------------------------------------------------
 -- Do not include white space characters when using $ in visual mode;
            -- see https://vi.stackexchange.com/q/12607/15292
@@ -121,7 +130,7 @@ vim.keymap.set("n", "<leader>v", "printf('`[%s`]', getregtype()[0])", {
 -- :pwd // print current dir
 -- ---------------------------------------------------------
                          -- Use Esc to quit builtin terminal
-vim.keymap.set("t", "<Esc>", [[<c-\><c-n>]])
+vim.keymap.set("t", "<Esc>", '<C-\\><C-n>')
 vim.keymap.set('n', 'q<leader>', 'q:')
 -- vim.keymap.set({'c', 't'}, '<Esc>', '<cmd>q<cr>')
 -- vim.cmd[[cnoremap <Esc> <c]]
@@ -135,9 +144,11 @@ vim.keymap.set("x", "c", '"_c')
 -- ---------------------------------------------------------
           -- Replace visual selection with text in register,
                            -- but not clogging the register;
-                           --
     -- see also https://stackoverflow.com/q/10723700/6064933
 vim.keymap.set("x", "p", '"_c<Esc>p')
+-- ---------------------------------------------------------
+                                        -- clandg_extensions
+vim.keymap.set("n", "<C-i>", "<cmd>ClangdSymbolInfo<cr>")
 -- ---------------------------------------------------------
 -- Thanks a lot to:
                 --  ThePrimeagen,

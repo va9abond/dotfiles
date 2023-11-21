@@ -7,6 +7,12 @@ local lactions = require('telescope.actions.layout')
 
 require('telescope').setup({
   defaults = {
+      mappings = {
+          n = {
+              ["q"] = actions.close,
+          }
+      }
+  },
     picker = {
       find_files = {
         find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*' },
@@ -19,7 +25,7 @@ require('telescope').setup({
               require("telescope.actions").close(prompt_bufnr)
               -- Depending on what you want put `cd`, `lcd`, `tcd`
               vim.cmd(string.format("silent cd %s", dir))
-            end
+            end,
           }
         }
       },
@@ -33,7 +39,6 @@ require('telescope').setup({
         case_mode = "smart_case",
       }
     }
-  }
 })
 
 require('telescope').load_extension('fzf')
@@ -50,5 +55,6 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>gf', builtin.git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = '[F]ind [F]iles' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = '[F]ind [B]uffers' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = '[F]ind by [G]rep' })
 vim.keymap.set('n', '<leader>f?', builtin.builtin, { desc = 'View Telescope Builtin' })

@@ -28,15 +28,15 @@ local _on_attach = function(client, bufnr)
     opts.desc = "See available code actions"
     vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
-    opts.desc = "Smart rename"
+    opts.desc = "Rename"
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
     opts.desc = "Show buffer diagnostics"
     vim.keymap.set("n", "<leader>fd", "<cmd>Telescope diagnostics bufnr=0<CR>", opts)
 
     opts.desc = "Show line diagnostics"
-    vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
-    -- vim.keymap.set("n", "<leader>l", vim.diagnostic.open_float, opts)
+    vim.keymap.set("n", "<space>d", function() require("trouble").toggle("document_diagnostics") end)
+    vim.keymap.set("n", "<space>e", vim.diagnostic.open_float, opts)
 
     opts.desc = "Go to previous diagnostic"
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
@@ -51,6 +51,10 @@ local _on_attach = function(client, bufnr)
     -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
 
     -- vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
+
+                           -- clangd_extensions inline hints
+    -- require("clangd_extensions.inlay_hints").setup_autocmd()
+    -- require("clangd_extensions.inlay_hints").set_inlay_hints()
 end
 
 -- ---------------------------------------------------------
@@ -90,8 +94,41 @@ lspconfig['lua_ls'].setup({
 })
                                                    -- clangd
 lspconfig['clangd'].setup({
-    capabilities = default_capabilities,
+    root_dir = function(fname)
+        return require("lspconfig.util").root_pattern(
+        "Makefile",
+        "configure.ac",
+        "configure.in",
+        "config.h.in",
+        "meson.build",
+        "meson_options.txt",
+        "build.ninja"
+        )(fname) or require("lspconfig.util").root_pattern("compile_commands.json", "compile_flags.txt")(
+        fname
+        ) or require("lspconfig.util").find_git_ancestor(fname)
+    end,
+
+    capabilities = {
+        offsetEncoding = { "utf-16" },
+    },
+
     on_attach = _on_attach,
+
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed",
+        "--function-arg-placeholders",
+        "--fallback-style=llvm",
+    },
+
+    init_options = {
+        usePlaceholders = true,
+        completeUnimported = true,
+        clangdFileStatus = true,
+    },
 })
                                                    -- texlab
 lspconfig['texlab'].setup({

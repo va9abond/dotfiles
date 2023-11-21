@@ -67,7 +67,3 @@ require('rose-pine').setup({
         Search = { bg = _mygreen, inherit = false },
     }
 })
-
--- Set colorscheme after options
-vim.opt.background = 'dark'
-vim.cmd('colorscheme rose-pine')
