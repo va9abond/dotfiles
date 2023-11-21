@@ -1,0 +1,37 @@
+# ---- General ----
+set selection-clipboard clipboard
+
+# Open document in fit-width mode by default
+set adjust-open "best-fit"
+
+# One page per row by default
+set pages-per-row 1
+
+# stop at page boundries
+set scroll-page-aware "true"
+# set smooth-scroll "true"
+set scroll-full-overlap 0.01
+set scroll-step 300
+
+# zoom settings
+set zoom-min 10
+set guioptions ""
+
+# set render-loading "false"
+set scroll-step 50
+
+
+# ---- Mappings ----
+# map <C-m> toggle_statusbar
+
+unmap f
+map f toggle_fullscreen
+map [fullscreen] f toggle_fullscreen
+
+map <C-i> zoom in
+map <C-o> zoom out
+
+# map / search
+#
+# map m mark_add
+# map <S-m> mark_evaluate
