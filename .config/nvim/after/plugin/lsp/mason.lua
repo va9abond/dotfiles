@@ -5,5 +5,6 @@ require('mason-lspconfig').setup({
         'lua_ls',
         'julials',
         'texlab',
+        -- 'clangd@16.0.2'
     },
 })

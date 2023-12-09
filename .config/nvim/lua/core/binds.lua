@@ -148,7 +148,7 @@ vim.keymap.set("x", "c", '"_c')
 vim.keymap.set("x", "p", '"_c<Esc>p')
 -- ---------------------------------------------------------
                                         -- clandg_extensions
-vim.keymap.set("n", "<C-i>", "<cmd>ClangdSymbolInfo<cr>")
+-- vim.keymap.set("n", "<C-i>", "<cmd>ClangdSymbolInfo<cr>")
 -- ---------------------------------------------------------
 -- Thanks a lot to:
                 --  ThePrimeagen,

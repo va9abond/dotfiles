@@ -6,6 +6,9 @@ vim.opt.showcmd = true
 -- vim.opt.wildmode = "longest:full"
 -- vim.opt.wildoptions = "pum"
 
+vim.g.XkbSwitchEnabled = 1
+vim.g.XkbSwitchIMappings = { 'ru' }
+
 vim.opt.mouse = "a"
 
 vim.wo.number = true

@@ -54,9 +54,17 @@ local plugins = {
             { 'onsails/lspkind.nvim', lazy = false },
                                                  -- Snippets
             { 'L3MON4D3/LuaSnip' },
+        },
+    },
+
+    {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        event = "InsertEnter",
+        dependencies = {
             { 'saadparwaiz1/cmp_luasnip' },
             { 'rafamadriz/friendly-snippets' },
-        },
+        }
     },
 
 -- ---------------------------------------------------------
@@ -99,7 +107,7 @@ local plugins = {
 
     { 'tpope/vim-vinegar' },
 
-    { 'ThePrimeagen/harpoon' },
+    { 'ThePrimeagen/harpoon', branch = 'harpoon2' },
 
     {
         'numToStr/Comment.nvim',
@@ -111,8 +119,7 @@ local plugins = {
     { 'phaazon/hop.nvim', branch = 'v2' },
 
     {
-        'windwp/nvim-autopairs',
-        event = "InsertEnter",
+        'echasnovski/mini.pairs', version = '*'
     },
 
     { 'mbbill/undotree' },
@@ -133,7 +140,6 @@ local plugins = {
                                                      --  GUI
     {
         "utilyre/barbecue.nvim",
-        name = "barbecue",
         version = "*",
         dependencies = {
             "SmiteshP/nvim-navic",
@@ -179,21 +185,6 @@ local plugins = {
         end,
         ft = { "markdown" },
     },
-
-    -- {
-    --     'toppair/peek.nvim',
-    --     build = 'deno task --quiet build:fast',
-    --     config = function()
-    --         require('peek').setup({
-    --             auto_load = false,
-    --             syntax = false,
-    --             theme = 'dark',
-    --             app = { 'chromium', '--new-window' },
-    --             vim.api.nvim_create_user_command('PeekOpen', require('peek').open, {}),
-    --             vim.api.nvim_create_user_command('PeekClose', require('peek').close, {})
-    --         })
-    --     end
-    -- },
 
 -- ---------------------------------------------------------
     { 'nvim-lua/plenary.nvim' },

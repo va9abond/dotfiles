@@ -46,15 +46,6 @@ local _on_attach = function(client, bufnr)
 
     opts.desc = "Show documentation for what is under cursor"
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-
-    -- opts.desc = "Show type signature"
-    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
-
-    -- vim.bo.omnifunc = "v:lua.vim.lsp.omnifunc"
-
-                           -- clangd_extensions inline hints
-    -- require("clangd_extensions.inlay_hints").setup_autocmd()
-    -- require("clangd_extensions.inlay_hints").set_inlay_hints()
 end
 
 -- ---------------------------------------------------------
@@ -132,11 +123,20 @@ lspconfig['clangd'].setup({
 })
                                                    -- texlab
 lspconfig['texlab'].setup({
-    capabilities = default_capabilities
+    capabilities = default_capabilities,
+    on_attach = _on_attach,
+    settings = {
+        texlab = {
+            diagnostics = {
+                ignoredPatterns = { "Overfull" }
+            }
+        }
+    }
 })
                                                    -- bashls
 lspconfig['bashls'].setup({
-    capabilities = default_capabilities
+    capabilities = default_capabilities,
+    on_attach = _on_attach,
 })
                                            -- vim.diagnostic
 vim.diagnostic.config({
@@ -144,45 +144,3 @@ vim.diagnostic.config({
         prefix = '●', -- Could be '■', '▎', 'x'
     }
 })
--- ----------------------------------------------------------------------------
--- -- Global mappings.
--- -- See `:help vim.diagnostic.*` for documentation on any of the below functions
--- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
--- vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
--- vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
--- vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist)
---
--- -- Use LspAttach autocommand to only map the following keys
--- -- after the language server attaches to the current buffer
--- vim.api.nvim_create_autocmd('LspAttach', {
---     group = vim.api.nvim_create_augroup('UserLspConfig', {}),
---     callback = function(ev)
---         -- Enable completion triggered by <c-x><c-o>
---         -- vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
---
---         -- Buffer local mappings.
---         -- See `:help vim.lsp.*` for documentation on any of the below functions
---         local opts = { buffer = ev.buf }
---         vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
---         -- vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
---         vim.keymap.set('n', '<Bslash>gd', goto_definition('vsplit'), opts)
---         vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
---         -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help)
---         -- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, opts)
---         -- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, opts)
---         -- vim.keymap.set('n', '<leader>wl', function()
---         --     print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
---         -- end, opts)
---
---         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
---         vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, opts)
---
---         -- vim.keymap.set('n', '<leader>D', builtin.lsp_type_definitions, opts)
---     end,
--- })
---
--- local t_builtin = require('telescope.builtin')
--- vim.keymap.set('n', 'gr', t_builtin.lsp_references)
--- vim.keymap.set('n', 'gI', t_builtin.lsp_implementations)
--- vim.keymap.set('n', '<leader>ds', t_builtin.lsp_document_symbols)
--- vim.keymap.set('n', '<leader>ws', t_builtin.lsp_dynamic_workspace_symbols)

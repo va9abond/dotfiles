@@ -1,6 +1,6 @@
 -- ---------------------------------------------------------
                                                       -- Set
-vim.opt.colorcolumn = "60"
+-- vim.opt.colorcolumn = "60"
 vim.opt.textwidth = 70
 vim.opt.wrap = true
 vim.opt.breakindent = true
