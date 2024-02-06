@@ -20,18 +20,20 @@ no_focus [title="^Peek preview$"]
 
 exec --no-startup-id xinput -set-prop 10 317 0.6
 exec --no-startup-id xrandr --output HDMI-A-0 --mode 1920x1080 --rate 144 --left-of eDP
-exec_always --no-startup-id setxkbmap -model pc105 -layout us,ru -variant ,winkeys -option grp:win_space_toggle
+exec_always --no-startup-id setxkbmap -model pc104 -layout us,ru -variant ,winkeys -option grp:win_space_toggle
                              # "us,ru" ",winkeys" "grp:win_space_toggle"
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
                                      # crtl:swapcaps
 exec_always --no-startup-id nm-applet --sm-disable
+
+exec --no-startup-id i3-battery-popup -D -L 65 -l 10 -m "KHAVAT' KNOCHETSYA"
 
 gaps inner 5
 gaps outer 5
 
 bindsym Mod4+l exec --no-startup-id i3exit lock, mode "default"
 
-bindsym $mod+0 mode "$mode_system"
+bindsym $mod+Ctrl+0 mode "$mode_system"
 set $mode_system (l)ock, (s)uspend, (Shift+s)hutdown, (r)eboot, (e)xit, switch_(u)ser
 mode "$mode_system" {
     bindsym l exec --no-startup-id i3exit lock, mode "default"
@@ -66,8 +68,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && $refresh_i3status
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
@@ -176,7 +178,7 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-# set $ws10 "10"
+set $ws10 "10"
 
 
 workspace $ws1 output HDMI-A-0
@@ -188,6 +190,7 @@ workspace $ws6 output HDMI-A-0
 workspace $ws7 output eDP
 workspace $ws8 output eDP
 workspace $ws9 output eDP
+workspace $ws10 output eDP
 
 workspace_auto_back_and_forth yes
 
@@ -205,6 +208,7 @@ bindsym Mod1+6 workspace number $ws6
 bindsym Mod1+7 workspace number $ws7
 bindsym Mod1+8 workspace number $ws8
 bindsym Mod1+9 workspace number $ws9
+bindsym Mod1+0 workspace number $ws10
 # bindsym Mod1+0 workspace number $ws10
 
 # move focused container to workspace
@@ -256,9 +260,19 @@ bindsym Mod1+r mode "resize"
 # finds out, if available)
 bar {
         output eDP
-        status_command i3status --config ~/.config/i3/i3status/config
+
+        # mode dock | hide | invisible
+        mode hide
+
+        hidden_state hide
+        modifier Mod4
+
         # status_command i3status
-        # hidden_state hide
+        status_command i3status --config ~/.config/i3/i3status/config
+
+        # position top | bottom
+        position top
+
         # tray_output eDP
         separator_symbol "::"
         # workspace_buttons yes
