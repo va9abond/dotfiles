@@ -94,11 +94,12 @@ source $ZSH/oh-my-zsh.sh
 # -------------------------------------------------------------------
 # Preferred editor for local and remote sessions
 # -------------------------------------------------------------------
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR="vim"
-else
-  export EDITOR="nvim"
-fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR="vim"
+# else
+#   export EDITOR="nvim"
+# fi
+export EDITOR="nvim"
 
 # if [ "$TERM_PROGRAM" = tmux ]; then
 #   export TERM="screen-256color"
@@ -147,6 +148,8 @@ alias glog="git log --graph --oneline --decorate --color"
 alias gls="git log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate"
 alias gll="git log --pretty=format:'%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --numstat"
 alias glls="git log --pretty=format:'%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]' --decorate --date=short"
+alias glg="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all"
+alias glge="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
 
 # Work in Progress
 alias gst="git status"
@@ -176,11 +179,13 @@ alias alacconf="nvim ~/.config/alacritty/alacritty.yml"
 # alias: latex-template
 # -------------------------------------------------------------------
 alias getlatex="cp ~/.latex-template/letterfonts.tex ~/.latex-template/macros.tex ~/.latex-template/preamble.tex ~/.latex-template/template.tex ."
-alias books="cd ~/Documents/sbooks"
+alias books="cd ~/Documents/books"
+alias pdfview="sioyek --new-window"
 # -------------------------------------------------------------------
 # alias: other
 # -------------------------------------------------------------------
 alias e="nvim"
+alias cppath="pwd | xclip -selection clipboard"
 
 # alias cd="cd .."
 # alias cdcd="cd ..;cd .."
@@ -191,14 +196,16 @@ alias egrep="egrep -- color=auto"
 alias ls="ls --color=auto"
 alias ll="ls -lav --ignore=.." # show long listing of all except ".."
 alias l="ls -lav -ignore=.?*"  # show long but no hidden dotfiles except "."
-alias gitlocal="cd ~/gitlocal"
 # alias wiki="cd Documents/wiki"
 
-alias jz="time ./a.out"
+alias jz="command time -p ./a.out"
+alias jzf="command time -p ./a.out < input.txt"
 
-alias g03="time g++ -pedantic-errors -Wall -Werror -g3 -O0 --std=c++03"
-alias g20="time g++ -pedantic-errors -Wall -Werror -g3 -O0 --std=c++20"
-alias clang20="time clang++ -pedantic-errors -Wall -Werror -g3 -O0 --std=c++20"
+alias g03="command time -p g++ -pedantic-errors -Wall -Werror -g3 -O0 --std=c++03"
+alias cf="command time -p g++ -g3 -O0 --std=c++17"
+alias g20="command time -p g++ -pedantic-errors -Wall -Werror -g3 -O0 --std=c++20"
+alias cxx="command time -p clang++ -pedantic-errors -Wall -Werror -g3 -O0 --std=c++20"
+alias clangc="command time -p clang -pedantic-errors -Wall -Werror -g3 -O0"
 
 alias jl="julia"
 # -------------------------------------------------------------------
@@ -206,6 +213,9 @@ alias jl="julia"
 bindkey -s ^P "tmux-sessionizer\n"
 # bindkey -s ^T "nvim ~/personal/todo.md"
 addToPathFront $HOME/bin
+# -------------------------------------------------------------------
+                                                  # todo.txt
+alias td="nvim /home/ave/personal/todo.md"
 # -------------------------------------------------------------------
                                                    # texlive
 addToPathFront /usr/local/texlive/2023/bin/x86_64-linux
