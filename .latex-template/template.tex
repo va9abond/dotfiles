@@ -1,29 +1,17 @@
-% Thank SeniorMars
-% https://github.com/SeniorMars/dotfiles/blob/master/latex_template/template.pdf
-% ------------------------------------------------------------------------------
-\documentclass[a4paper,12pt]{report}
 % book report(no part) article(no part/chapter) letter slides
 %      ------          -------
-% chapter c section c subsection c subsubsection c paragraph c subparagraph
-
-\input{preamble}
-\input{graphs}
-\input{code}
-\input{bib}
-\input{macros}
-\input{letterfonts}
-
-\date{09/12/2023}
+% chapter c section c subsection c subsubsection c paragraph c
+%                                                         subparagraph
+% ====================================================================
+\documentclass[a4paper,12pt]{report}
+\input{inc/preamble}
+% ====================================================================
+\title{The \huge{Title}}
+\author{Rustem Sirazetdinov}
+\date{\today}
 
 \begin{document}
+\maketitle
 
-    \tableofcontents
-    \pagebreak
-
-    \chapter{No of Chapter}
-    \section{Random section name}
-
-    \section{Random}
-    \section{Algorithms}
-
+Hello, World!
 \end{document}

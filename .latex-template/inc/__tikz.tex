@@ -1,11 +1,20 @@
-\PassOptionsToPackage{dvipsnames, table, xcdraw}{xcolor}
+\PassOptionsToPackage{dvipsnames,table,xcdraw}{xcolor}
+% \usepackage[dvipsnames,table,xcdraw]{xcolor} % load before pgfplots
+
+
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
+
+\usepgfplotslibrary{colorbrewer}
+
+
 \usepackage{tikz}
+
 \usetikzlibrary{positioning}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{decorations.pathreplacing,calligraphy}
 \usetikzlibrary{shapes.geometric}
-\usepgfplotslibrary{colorbrewer}
+
 \usepackage[export]{adjustbox}
+
 \usepackage{subfig}
