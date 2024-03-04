@@ -137,10 +137,6 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-bindsym Ctrl+$left focus left
-bindsym Ctrl+$down focus down
-bindsym Ctrl+$up focus up
-bindsym Ctrl+$right focus right
 
 # move focused window
 bindsym $mod+Shift+$left move left 40 px
@@ -211,10 +207,10 @@ set $ws9 "9"
 set $ws10 "10"
 
 
-# workspace $ws1 output HDMI-A-0
-# workspace $ws2 output HDMI-A-0
-workspace $ws1 output eDP
-workspace $ws2 output eDP
+workspace $ws1 output HDMI-A-0
+workspace $ws2 output HDMI-A-0
+# workspace $ws1 output eDP
+# workspace $ws2 output eDP
 workspace $ws3 output eDP
 workspace $ws4 output eDP
 workspace $ws5 output eDP
