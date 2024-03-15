@@ -18,3 +18,10 @@
 \usepackage[export]{adjustbox}
 
 \usepackage{subfig}
+
+
+
+\newcommand{\incfig}[2]{% \columnwidth
+    \def\svgwidth{#1}
+    \import{./inc/figures/}{#2.pdf_tex}
+}
